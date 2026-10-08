@@ -545,7 +545,7 @@ def generate_spaceship(random_seed='',
     for face in bm.faces[:]:
         if abs(face.normal.x) > 0.5:
             hull_segment_length = uniform(0.3, 1)
-            num_hull_segments = randrange(num_hull_segments_min, num_hull_segments_max)
+            num_hull_segments = randint(num_hull_segments_min, num_hull_segments_max)
             hull_segment_range = range(num_hull_segments)
             for i in hull_segment_range:
                 is_last_hull_segment = i == hull_segment_range[-1]
@@ -599,7 +599,7 @@ def generate_spaceship(random_seed='',
                 continue
             if random() > 0.85:
                 hull_piece_length = uniform(0.1, 0.4)
-                for i in range(randrange(num_asymmetry_segments_min, num_asymmetry_segments_max)):
+                for i in range(randint(num_asymmetry_segments_min, num_asymmetry_segments_max)):
                     face = extrude_face(bm, face, hull_piece_length)
 
                     # Maybe apply some scaling

@@ -13,7 +13,10 @@ Usage
 * Under Edit > Preferences... > Add-ons > Install... open the downloaded ZIP file
 * Under Edit > Preferences... > Add-ons enable the "Add Mesh: Spaceship Generator" script (search for "spaceship")
 * Add a spaceship in the 3D View under Add > Mesh > Spaceship
-* Expand the Spaceship tab that appears in the bottom left of the viewport to adjust procedural generation settings
+* Press `N` in the 3D View and open the `Spaceship` sidebar tab to create a ship or edit and regenerate the selected ship
+* Immediately after adding a ship, `F9` also opens Blender's Adjust Last Operation panel
+* The minimum and maximum segment values are inclusive; set them equal for a fixed count
+* The add-on interface uses Simplified Chinese when Blender's language is set to Simplified Chinese with interface translation enabled
 
 How it works
 ------------
