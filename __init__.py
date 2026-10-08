@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Spaceship Generator",
     "author": "Michael Davies",
-    "version": (1, 1, 5),
+    "version": (1, 1, 6),
     "blender": (5, 2, 0),
     "location": "View3D > Add > Mesh; Sidebar > Spaceship",
     "description": "Procedurally generate 3D spaceships from a random seed.",
@@ -180,6 +180,9 @@ class RegenerateSpaceship(Operator):
         old_matrix = old_obj.matrix_world.copy()
         old_collections = tuple(old_obj.users_collection)
         old_mesh = old_obj.data
+        old_materials = tuple(
+            mat for mat in old_mesh.materials
+            if mat is not None and mat.get('spaceship_generator', False))
 
         new_obj = generate_from_settings(settings)
         save_settings(new_obj, settings)
@@ -194,6 +197,9 @@ class RegenerateSpaceship(Operator):
         bpy.data.objects.remove(old_obj, do_unlink=True)
         if old_mesh.users == 0:
             bpy.data.meshes.remove(old_mesh)
+        for material in old_materials:
+            if material.users == 0:
+                bpy.data.materials.remove(material)
         new_obj.name = old_name
         return {'FINISHED'}
 

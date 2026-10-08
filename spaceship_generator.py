@@ -729,13 +729,13 @@ def generate_spaceship(random_seed='',
 
     # Add materials to the spaceship
     me = ob.data
-    materials = create_materials()
-    # materials = []
+    if assign_materials:
+        materials = create_materials()
+    else:
+        materials = [bpy.data.materials.new(name="Material") for _ in Material]
     for mat in materials:
-        if assign_materials:
-            me.materials.append(mat)
-        else:
-            me.materials.append(bpy.data.materials.new(name="Material"))
+        mat['spaceship_generator'] = True
+        me.materials.append(mat)
 
     return obj
 
